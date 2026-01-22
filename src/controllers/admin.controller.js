@@ -44,7 +44,7 @@ export const getStats = async (req, res) => {
       }
     ]);
 
-    const monthlyTrend = await Expense.aggregate([
+    const monthlyTrends = await Expense.aggregate([
       {
         $group: {
           _id: {
@@ -82,7 +82,7 @@ export const getStats = async (req, res) => {
       totalUsers,
       totalExpenses,
       expensesByCategory,
-      monthlyTrend
+      monthlyTrends
     });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
